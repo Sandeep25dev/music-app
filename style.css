@@ -115,3 +115,7 @@ i {
   margin-right: 10px;
   transition: opacity 0.5s ease-in;
 }
+
+.fa-solid {
+  font-size: 30px;
+}

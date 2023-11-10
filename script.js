@@ -1,59 +1,69 @@
 const songs = [
   {
+    id: 0,
     songName: "One Love",
     artist: "Shubh Khalistaani",
     img: "./covers/1.jpg",
     filePath: "./songs/1.mp3",
   },
   {
+    id: 1,
     songName: "Brown Rang",
     artist: "Yo Yo Honey Singh",
     img: "./covers/2.jpg",
     filePath: "./songs/2.mp3",
   },
   {
+    id: 2,
     songName: "Blue Eyes",
     artist: "Yo Yo Honey Singh",
     img: "./covers/3.jpg",
     filePath: "./songs/3.mp3",
   },
   {
+    id: 3,
     songName: "Desi Kalakaar",
     artist: "Yo Yo Honey Singh",
     img: "./covers/4.jpg",
     filePath: "./songs/4.mp3",
   },
   {
+    id: 4,
     songName: "Love Dose",
     artist: "Yo Yo Honey Singh",
     img: "./covers/5.jpg",
     filePath: "./songs/5.mp3",
   },
   {
+    id: 5,
     songName: "Yaar Bathere",
     artist: "Yo Yo Honey Singh",
     img: "./covers/6.jpg",
     filePath: "./songs/6.mp3",
   },
   {
+    id: 6,
     songName: "Birthday Bash",
     artist: "Yo Yo Honey Singh",
     img: "./covers/7.jpg",
     filePath: "./songs/7.mp3",
   },
   {
+    id: 7,
     songName: "Bebo",
     artist: "Yo Yo Honey Singh",
     img: "./covers/8.jpg",
     filePath: "./songs/8.mp3",
   },
   {
+    id: 8,
     songName: "Choot Vol.1",
     artist: "Yo Yo Honey Singh",
     img: "./covers/9.jpg",
     filePath: "./songs/9.mp3",
   },
   {
+    id: 9,
     songName: "Get Up Jawani",
     artist: "Yo Yo Honey Singh",
     img: "./covers/10.jpg",
@@ -91,13 +101,14 @@ const createSongsUI = songs
 <span class="song-list-play"
   ><span class="timestamp"
     ><span>05:15</span>
-    <i class="fa-regular fa-circle-play"></i></span
+    <i id="${el.id}" class="fa-regular fa-circle-play"></i></span
 ></span>
 </div>`
   )
   .join("");
 
 songItemContainer.innerHTML = createSongsUI;
+
 // songItemContainer.insertAdjacentElement("afterend", createSongsUI);
 // console.log(songInfoSongName.textContent);
 songInfoSongName.textContent = currentSong;
@@ -150,3 +161,15 @@ previousButton.addEventListener("click", () => {
     songIndex = 0;
   }
 });
+
+Array.from(document.getElementsByClassName("fa-circle-play")).forEach(
+  (element) => {
+    element.addEventListener("click", (e) => {
+      let index = parseInt(e.target.id);
+      songIndex = index;
+      audioElement.src = songs[songIndex].filePath;
+      currentSong = `${songs[songIndex].songName} - ${songs[songIndex].artist}`;
+      songInfoSongName.textContent = currentSong;
+    });
+  }
+);
