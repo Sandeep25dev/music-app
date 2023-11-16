@@ -146,6 +146,9 @@ nextButton.addEventListener("click", () => {
     audioElement.src = songs[songIndex].filePath;
     currentSong = `${songs[songIndex].songName} - ${songs[songIndex].artist}`;
     songInfoSongName.textContent = currentSong;
+    if (!masterPlayBtn.classList.contains("fa-play")) {
+      audioElement.play();
+    }
     console.log(songIndex, currentSong);
   } else {
     songIndex = 0;
@@ -157,6 +160,9 @@ previousButton.addEventListener("click", () => {
     songIndex--;
     currentSong = `${songs[songIndex].songName} - ${songs[songIndex].artist}`;
     songInfoSongName.textContent = currentSong;
+    if (!masterPlayBtn.classList.contains("fa-play")) {
+      audioElement.play();
+    }
   } else {
     songIndex = 0;
   }
