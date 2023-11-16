@@ -176,6 +176,11 @@ Array.from(document.getElementsByClassName("fa-circle-play")).forEach(
       audioElement.src = songs[songIndex].filePath;
       currentSong = `${songs[songIndex].songName} - ${songs[songIndex].artist}`;
       songInfoSongName.textContent = currentSong;
+      audioElement.play();
+      if (masterPlayBtn.classList.contains("fa-play")) {
+        masterPlayBtn.classList.remove("fa-play");
+        masterPlayBtn.classList.add("fa-pause");
+      }
     });
   }
 );
